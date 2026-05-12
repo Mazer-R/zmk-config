@@ -1,0 +1,6 @@
+if SHIELD_REV45LP
+
+config ZMK_KEYBOARD_NAME
+    default "rev45lp"
+
+endif # SHIELD_REV45LP
