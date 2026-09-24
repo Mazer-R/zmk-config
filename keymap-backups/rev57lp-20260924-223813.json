@@ -1,0 +1,2010 @@
+{
+  "format_version": 1,
+  "created": "2026-09-24T22:38:13",
+  "device_name": "Rev57LP",
+  "physical_layout": {
+    "name": "Rev57LP",
+    "keys": [
+      {
+        "width": 100,
+        "height": 100,
+        "x": 0,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 100,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 200,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 300,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 400,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 500,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 700,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 800,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 900,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1000,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1100,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1200,
+        "y": 0,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 0,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 100,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 200,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 300,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 400,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 500,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 700,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 800,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 900,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1000,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1100,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1200,
+        "y": 100,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 0,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 100,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 200,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 300,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 400,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 500,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 600,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 700,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 800,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 900,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1000,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1100,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1200,
+        "y": 200,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 0,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 100,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 200,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 300,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 400,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 500,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 700,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 800,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 900,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1000,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1100,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1200,
+        "y": 300,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 200,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 300,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 400,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 500,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 700,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 800,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 900,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "x": 1000,
+        "y": 400,
+        "r": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    ]
+  },
+  "behaviors": {
+    "1": {
+      "label": "caps_word",
+      "display_name": "Caps Word"
+    },
+    "2": {
+      "label": "ext_power",
+      "display_name": "External Power"
+    },
+    "3": {
+      "label": "kp",
+      "display_name": "Key Press"
+    },
+    "4": {
+      "label": "gresc",
+      "display_name": "Grave/Escape"
+    },
+    "5": {
+      "label": "key_repeat",
+      "display_name": "Key Repeat"
+    },
+    "6": {
+      "label": "kt",
+      "display_name": "Key Toggle"
+    },
+    "7": {
+      "label": "mo",
+      "display_name": "Momentary Layer"
+    },
+    "8": {
+      "label": "lt",
+      "display_name": "Layer-Tap"
+    },
+    "9": {
+      "label": "sk",
+      "display_name": "Sticky Key"
+    },
+    "10": {
+      "label": "sl",
+      "display_name": "Sticky Layer"
+    },
+    "11": {
+      "label": "sys_reset",
+      "display_name": "Reset"
+    },
+    "12": {
+      "label": "to",
+      "display_name": "To Layer"
+    },
+    "13": {
+      "label": "tog",
+      "display_name": "Toggle Layer"
+    },
+    "14": {
+      "label": "bt",
+      "display_name": "Bluetooth"
+    },
+    "15": {
+      "label": "bootloader",
+      "display_name": "Bootloader"
+    },
+    "16": {
+      "label": "mt",
+      "display_name": "Mod-Tap"
+    },
+    "17": {
+      "label": "out",
+      "display_name": "Output Selection"
+    },
+    "18": {
+      "label": "rgb_ug",
+      "display_name": "Underglow"
+    },
+    "19": {
+      "label": "studio_unlock",
+      "display_name": "Studio Unlock"
+    },
+    "20": {
+      "label": "trans",
+      "display_name": "Transparent"
+    },
+    "21": {
+      "label": "forty_two",
+      "display_name": "ZM_forty_two"
+    },
+    "22": {
+      "label": "none",
+      "display_name": "None"
+    }
+  },
+  "keymap": {
+    "available_layers": 2,
+    "layers": [
+      {
+        "id": 0,
+        "name": "Default",
+        "bindings": [
+          {
+            "behavior_id": 4,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&gresc"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458782,
+            "param2": 0,
+            "keymap": "&kp N1"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458783,
+            "param2": 0,
+            "keymap": "&kp N2"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458784,
+            "param2": 0,
+            "keymap": "&kp N3"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458785,
+            "param2": 0,
+            "keymap": "&kp N4"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458786,
+            "param2": 0,
+            "keymap": "&kp N5"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458787,
+            "param2": 0,
+            "keymap": "&kp N6"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458788,
+            "param2": 0,
+            "keymap": "&kp N7"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458789,
+            "param2": 0,
+            "keymap": "&kp N8"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458790,
+            "param2": 0,
+            "keymap": "&kp N9"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458791,
+            "param2": 0,
+            "keymap": "&kp N0"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458794,
+            "param2": 0,
+            "keymap": "&kp BSPC"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458795,
+            "param2": 0,
+            "keymap": "&kp TAB"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458772,
+            "param2": 0,
+            "keymap": "&kp Q"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458778,
+            "param2": 0,
+            "keymap": "&kp W"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458760,
+            "param2": 0,
+            "keymap": "&kp E"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458773,
+            "param2": 0,
+            "keymap": "&kp R"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458775,
+            "param2": 0,
+            "keymap": "&kp T"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458780,
+            "param2": 0,
+            "keymap": "&kp Y"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458776,
+            "param2": 0,
+            "keymap": "&kp U"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458764,
+            "param2": 0,
+            "keymap": "&kp I"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458770,
+            "param2": 0,
+            "keymap": "&kp O"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458771,
+            "param2": 0,
+            "keymap": "&kp P"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458828,
+            "param2": 0,
+            "keymap": "&kp DEL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458977,
+            "param2": 0,
+            "keymap": "&kp LSHIFT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458756,
+            "param2": 0,
+            "keymap": "&kp A"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458774,
+            "param2": 0,
+            "keymap": "&kp S"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458759,
+            "param2": 0,
+            "keymap": "&kp D"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458761,
+            "param2": 0,
+            "keymap": "&kp F"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458762,
+            "param2": 0,
+            "keymap": "&kp G"
+          },
+          {
+            "behavior_id": 7,
+            "param1": 2,
+            "param2": 0,
+            "keymap": "&mo RAISE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458763,
+            "param2": 0,
+            "keymap": "&kp H"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458765,
+            "param2": 0,
+            "keymap": "&kp J"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458766,
+            "param2": 0,
+            "keymap": "&kp K"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458767,
+            "param2": 0,
+            "keymap": "&kp L"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458803,
+            "param2": 0,
+            "keymap": "&kp SEMI"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458804,
+            "param2": 0,
+            "keymap": "&kp SQT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458976,
+            "param2": 0,
+            "keymap": "&kp LCTRL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458781,
+            "param2": 0,
+            "keymap": "&kp Z"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458779,
+            "param2": 0,
+            "keymap": "&kp X"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458758,
+            "param2": 0,
+            "keymap": "&kp C"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458777,
+            "param2": 0,
+            "keymap": "&kp V"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458757,
+            "param2": 0,
+            "keymap": "&kp B"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458769,
+            "param2": 0,
+            "keymap": "&kp N"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458768,
+            "param2": 0,
+            "keymap": "&kp M"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458806,
+            "param2": 0,
+            "keymap": "&kp COMMA"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458807,
+            "param2": 0,
+            "keymap": "&kp DOT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458808,
+            "param2": 0,
+            "keymap": "&kp SLASH"
+          },
+          {
+            "behavior_id": 16,
+            "param1": 458981,
+            "param2": 458792,
+            "keymap": "&mt RSHIFT RET"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458978,
+            "param2": 0,
+            "keymap": "&kp LALT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458979,
+            "param2": 0,
+            "keymap": "&kp LGUI"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458796,
+            "param2": 0,
+            "keymap": "&kp SPACE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458832,
+            "param2": 0,
+            "keymap": "&kp LEFT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458831,
+            "param2": 0,
+            "keymap": "&kp RIGHT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458796,
+            "param2": 0,
+            "keymap": "&kp SPACE"
+          },
+          {
+            "behavior_id": 7,
+            "param1": 2,
+            "param2": 0,
+            "keymap": "&mo RAISE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458980,
+            "param2": 0,
+            "keymap": "&kp RCTRL"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Lower",
+        "bindings": [
+          {
+            "behavior_id": 3,
+            "param1": 34013237,
+            "param2": 0,
+            "keymap": "&kp TILDE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013214,
+            "param2": 0,
+            "keymap": "&kp EXCL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013215,
+            "param2": 0,
+            "keymap": "&kp AT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013216,
+            "param2": 0,
+            "keymap": "&kp HASH"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013217,
+            "param2": 0,
+            "keymap": "&kp DLLR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013218,
+            "param2": 0,
+            "keymap": "&kp PRCNT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013219,
+            "param2": 0,
+            "keymap": "&kp CARET"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013220,
+            "param2": 0,
+            "keymap": "&kp AMPS"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013221,
+            "param2": 0,
+            "keymap": "&kp STAR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013222,
+            "param2": 0,
+            "keymap": "&kp LPAR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013223,
+            "param2": 0,
+            "keymap": "&kp RPAR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458794,
+            "param2": 0,
+            "keymap": "&kp BSPC"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013237,
+            "param2": 0,
+            "keymap": "&kp TILDE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013214,
+            "param2": 0,
+            "keymap": "&kp EXCL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013215,
+            "param2": 0,
+            "keymap": "&kp AT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013216,
+            "param2": 0,
+            "keymap": "&kp HASH"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013217,
+            "param2": 0,
+            "keymap": "&kp DLLR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013218,
+            "param2": 0,
+            "keymap": "&kp PRCNT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013219,
+            "param2": 0,
+            "keymap": "&kp CARET"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013220,
+            "param2": 0,
+            "keymap": "&kp AMPS"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013221,
+            "param2": 0,
+            "keymap": "&kp STAR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013222,
+            "param2": 0,
+            "keymap": "&kp LPAR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013223,
+            "param2": 0,
+            "keymap": "&kp RPAR"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458828,
+            "param2": 0,
+            "keymap": "&kp DEL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458828,
+            "param2": 0,
+            "keymap": "&kp DEL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458810,
+            "param2": 0,
+            "keymap": "&kp F1"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458811,
+            "param2": 0,
+            "keymap": "&kp F2"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458812,
+            "param2": 0,
+            "keymap": "&kp F3"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458813,
+            "param2": 0,
+            "keymap": "&kp F4"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458814,
+            "param2": 0,
+            "keymap": "&kp F5"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 786608,
+            "param2": 0,
+            "keymap": "&kp C_PLAY"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458815,
+            "param2": 0,
+            "keymap": "&kp F6"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458797,
+            "param2": 0,
+            "keymap": "&kp MINUS"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013230,
+            "param2": 0,
+            "keymap": "&kp PLUS"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458799,
+            "param2": 0,
+            "keymap": "&kp LBKT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458800,
+            "param2": 0,
+            "keymap": "&kp RBKT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 34013233,
+            "param2": 0,
+            "keymap": "&kp PIPE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458977,
+            "param2": 0,
+            "keymap": "&kp LSHIFT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458816,
+            "param2": 0,
+            "keymap": "&kp F7"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458817,
+            "param2": 0,
+            "keymap": "&kp F8"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458818,
+            "param2": 0,
+            "keymap": "&kp F9"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458819,
+            "param2": 0,
+            "keymap": "&kp F10"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458820,
+            "param2": 0,
+            "keymap": "&kp F11"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458821,
+            "param2": 0,
+            "keymap": "&kp F12"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458976,
+            "param2": 0,
+            "keymap": "&kp LCTRL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458826,
+            "param2": 0,
+            "keymap": "&kp HOME"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458829,
+            "param2": 0,
+            "keymap": "&kp END"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 786666,
+            "param2": 0,
+            "keymap": "&kp C_VOL_DN"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 786665,
+            "param2": 0,
+            "keymap": "&kp C_VOL_UP"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 7,
+            "param1": 2,
+            "param2": 0,
+            "keymap": "&mo RAISE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 786613,
+            "param2": 0,
+            "keymap": "&kp C_NEXT"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Raise",
+        "bindings": [
+          {
+            "behavior_id": 3,
+            "param1": 34013237,
+            "param2": 0,
+            "keymap": "&kp TILDE"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458810,
+            "param2": 0,
+            "keymap": "&kp F1"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458811,
+            "param2": 0,
+            "keymap": "&kp F2"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458812,
+            "param2": 0,
+            "keymap": "&kp F3"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458813,
+            "param2": 0,
+            "keymap": "&kp F4"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458814,
+            "param2": 0,
+            "keymap": "&kp F5"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458815,
+            "param2": 0,
+            "keymap": "&kp F6"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458816,
+            "param2": 0,
+            "keymap": "&kp F7"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458817,
+            "param2": 0,
+            "keymap": "&kp F8"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458818,
+            "param2": 0,
+            "keymap": "&kp F9"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458819,
+            "param2": 0,
+            "keymap": "&kp F10"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458820,
+            "param2": 0,
+            "keymap": "&kp F11"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458834,
+            "param2": 0,
+            "keymap": "&kp UP"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458797,
+            "param2": 0,
+            "keymap": "&kp MINUS"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458855,
+            "param2": 0,
+            "keymap": "&kp KP_EQUAL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458821,
+            "param2": 0,
+            "keymap": "&kp F12"
+          },
+          {
+            "behavior_id": 1,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&caps_word"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 7,
+            "param1": 1,
+            "param2": 0,
+            "keymap": "&mo LOWER"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458832,
+            "param2": 0,
+            "keymap": "&kp LEFT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458833,
+            "param2": 0,
+            "keymap": "&kp DOWN"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458831,
+            "param2": 0,
+            "keymap": "&kp RIGHT"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458801,
+            "param2": 0,
+            "keymap": "&kp BSLH"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458799,
+            "param2": 0,
+            "keymap": "&kp LBKT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458800,
+            "param2": 0,
+            "keymap": "&kp RBKT"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 7,
+            "param1": 1,
+            "param2": 0,
+            "keymap": "&mo LOWER"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458833,
+            "param2": 0,
+            "keymap": "&kp DOWN"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458834,
+            "param2": 0,
+            "keymap": "&kp UP"
+          },
+          {
+            "behavior_id": 22,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&none"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Adjust",
+        "bindings": [
+          {
+            "behavior_id": 15,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&bootloader"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458782,
+            "param2": 0,
+            "keymap": "&kp N1"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458783,
+            "param2": 0,
+            "keymap": "&kp N2"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458784,
+            "param2": 0,
+            "keymap": "&kp N3"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458785,
+            "param2": 0,
+            "keymap": "&kp N4"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458786,
+            "param2": 0,
+            "keymap": "&kp N5"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458756,
+            "param2": 0,
+            "keymap": "&kp A"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458788,
+            "param2": 0,
+            "keymap": "&kp N7"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458789,
+            "param2": 0,
+            "keymap": "&kp N8"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458790,
+            "param2": 0,
+            "keymap": "&kp N9"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458791,
+            "param2": 0,
+            "keymap": "&kp N0"
+          },
+          {
+            "behavior_id": 19,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&studio_unlock"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&bt BT_CLR"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 3,
+            "param2": 0,
+            "keymap": "&bt BT_SEL 0"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 3,
+            "param2": 1,
+            "keymap": "&bt BT_SEL 1"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 3,
+            "param2": 2,
+            "keymap": "&bt BT_SEL 2"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 3,
+            "param2": 3,
+            "keymap": "&bt BT_SEL 3"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 3,
+            "param2": 4,
+            "keymap": "&bt BT_SEL 4"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458780,
+            "param2": 0,
+            "keymap": "&kp Y"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458776,
+            "param2": 0,
+            "keymap": "&kp U"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458764,
+            "param2": 0,
+            "keymap": "&kp I"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458770,
+            "param2": 0,
+            "keymap": "&kp O"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458771,
+            "param2": 0,
+            "keymap": "&kp P"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458828,
+            "param2": 0,
+            "keymap": "&kp DEL"
+          },
+          {
+            "behavior_id": 17,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&out OUT_TOG"
+          },
+          {
+            "behavior_id": 14,
+            "param1": 4,
+            "param2": 0,
+            "keymap": "&bt BT_CLR_ALL"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458774,
+            "param2": 0,
+            "keymap": "&kp S"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458759,
+            "param2": 0,
+            "keymap": "&kp D"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458761,
+            "param2": 0,
+            "keymap": "&kp F"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458762,
+            "param2": 0,
+            "keymap": "&kp G"
+          },
+          {
+            "behavior_id": 13,
+            "param1": 3,
+            "param2": 0,
+            "keymap": "&tog ADJUST"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458763,
+            "param2": 0,
+            "keymap": "&kp H"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458765,
+            "param2": 0,
+            "keymap": "&kp J"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458766,
+            "param2": 0,
+            "keymap": "&kp K"
+          },
+          {
+            "behavior_id": 18,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&rgb_ug RGB_TOG"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458803,
+            "param2": 0,
+            "keymap": "&kp SEMI"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458804,
+            "param2": 0,
+            "keymap": "&kp SQT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458977,
+            "param2": 0,
+            "keymap": "&kp LSHIFT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458781,
+            "param2": 0,
+            "keymap": "&kp Z"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458779,
+            "param2": 0,
+            "keymap": "&kp X"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458758,
+            "param2": 0,
+            "keymap": "&kp C"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458777,
+            "param2": 0,
+            "keymap": "&kp V"
+          },
+          {
+            "behavior_id": 18,
+            "param1": 4,
+            "param2": 0,
+            "keymap": "&rgb_ug RGB_HUD"
+          },
+          {
+            "behavior_id": 18,
+            "param1": 3,
+            "param2": 0,
+            "keymap": "&rgb_ug RGB_HUI"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458768,
+            "param2": 0,
+            "keymap": "&kp M"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458806,
+            "param2": 0,
+            "keymap": "&kp COMMA"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458807,
+            "param2": 0,
+            "keymap": "&kp DOT"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458808,
+            "param2": 0,
+            "keymap": "&kp SLASH"
+          },
+          {
+            "behavior_id": 16,
+            "param1": 458981,
+            "param2": 458792,
+            "keymap": "&mt RSHIFT RET"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458978,
+            "param2": 0,
+            "keymap": "&kp LALT"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458796,
+            "param2": 0,
+            "keymap": "&kp SPACE"
+          },
+          {
+            "behavior_id": 18,
+            "param1": 8,
+            "param2": 0,
+            "keymap": "&rgb_ug RGB_BRD"
+          },
+          {
+            "behavior_id": 18,
+            "param1": 7,
+            "param2": 0,
+            "keymap": "&rgb_ug RGB_BRI"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458796,
+            "param2": 0,
+            "keymap": "&kp SPACE"
+          },
+          {
+            "behavior_id": 20,
+            "param1": 0,
+            "param2": 0,
+            "keymap": "&trans"
+          },
+          {
+            "behavior_id": 3,
+            "param1": 458853,
+            "param2": 0,
+            "keymap": "&kp K_CMENU"
+          }
+        ]
+      }
+    ]
+  }
+}
