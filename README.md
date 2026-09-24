@@ -21,7 +21,8 @@ driven by a **nice!nano v2**. It uses ZMK v0.3 with
 │   ├── Kconfig                     Options of the custom firmware features
 │   └── CMakeLists.txt              Builds each feature only when it is enabled
 ├── src/                            Custom firmware features, one file each
-│   └── rgb_battery_status.c        Battery level on the underglow
+│   ├── rgb_battery_status.c/.h     Battery level on the underglow
+│   └── rgb_caps_indicator.c        Cyan underglow while Caps Lock or Caps Word is on
 ├── scripts/studio-keymap/          Tool to back up the keymap stored by ZMK Studio
 └── keymap-backups/                 Backups written by that tool
 ```
@@ -110,6 +111,32 @@ returns to whatever it was showing (colour, effect, on or off).
 - While charging, the nice!nano measures a higher voltage, so the level shown can
   be higher than the real charge.
 
+## Caps Lock and Caps Word on the underglow
+
+While **Caps Lock** or **Caps Word** is on, the whole underglow turns **solid
+cyan**. When both are off, the underglow returns to exactly what it was showing
+before, including staying off if it was off.
+
+- **Caps Lock** is the computer's: the keyboard learns it from the computer, the
+  same signal that lights the Caps Lock LED on a regular keyboard, over USB or
+  Bluetooth.
+- **Caps Word** (`&caps_word`) is ZMK's: it capitalises the letters you type until
+  you press a key that is not a letter, a number, `_`, Backspace, Delete or a
+  modifier (Space, for example), which turns it off and the cyan with it.
+- Options in `config/rev57lp.conf` (all described in `zephyr/Kconfig`):
+  `CONFIG_RGB_CAPS_INDICATOR_HUE` (default 180 = cyan),
+  `CONFIG_RGB_CAPS_INDICATOR_BRIGHTNESS`, and
+  `CONFIG_RGB_CAPS_INDICATOR_CAPS_LOCK` / `CONFIG_RGB_CAPS_INDICATOR_CAPS_WORD`
+  to react to only one of them.
+- If the keyboard is switched off while cyan, it starts with its previous colours;
+  the cyan comes back only if the computer still reports Caps Lock on.
+- A battery blink still happens while cyan, and returns to cyan afterwards.
+  Changing the underglow with the RGB keys while cyan is undone when the caps
+  state goes off.
+- ZMK does not publish the Caps Word state, so `src/rgb_caps_indicator.c` reads it
+  from ZMK v0.3's internal data. If the ZMK version in `config/west.yml` is ever
+  updated, check the note in `caps_word_is_active()`.
+
 ## Adding a custom firmware feature
 
 Custom features live in this repository as a Zephyr module, so they do not need a
@@ -121,7 +148,10 @@ fork of ZMK:
    line to `zephyr/CMakeLists.txt`.
 4. Enable it in `config/rev57lp.conf`.
 
-`src/rgb_battery_status.c` is a complete example.
+`src/rgb_battery_status.c` and `src/rgb_caps_indicator.c` are complete examples. When
+two features change the underglow, they coordinate through a small header, as
+`rgb_caps_indicator.c` does with `rgb_battery_status.h` to wait for a battery blink to
+finish.
 
 ## Keymap backups
 

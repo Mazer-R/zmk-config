@@ -5,3 +5,4 @@
 set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/../src)
 
 target_sources_ifdef(CONFIG_RGB_BATTERY_STATUS app PRIVATE ${SRC_DIR}/rgb_battery_status.c)
+target_sources_ifdef(CONFIG_RGB_CAPS_INDICATOR app PRIVATE ${SRC_DIR}/rgb_caps_indicator.c)
