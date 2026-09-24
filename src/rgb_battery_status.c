@@ -22,6 +22,8 @@
 #include <zmk/rgb_underglow.h>
 #include <zmk/workqueue.h>
 
+#include "rgb_battery_status.h"
+
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 /* ---------------------------------------------------------------------- */
@@ -76,6 +78,8 @@ static void blink_step(struct k_work *work);
 
 static K_WORK_DELAYABLE_DEFINE(check_work, check_battery);
 static K_WORK_DELAYABLE_DEFINE(blink_work, blink_step);
+
+bool rgb_battery_status_is_blinking(void) { return blink.active; }
 
 __maybe_unused static const struct battery_level *find_level(uint8_t charge) {
     for (size_t i = 0; i < ARRAY_SIZE(levels); i++) {

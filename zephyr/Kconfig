@@ -34,3 +34,34 @@ config RGB_BATTERY_STATUS_DEMO
       charge. Combine with a short interval to try out the colours.
 
 endif
+
+menuconfig RGB_CAPS_INDICATOR
+    bool "Show Caps Lock and Caps Word on the underglow"
+    depends on ZMK_RGB_UNDERGLOW
+    help
+      While Caps Lock or Caps Word is on, light the whole underglow in one
+      colour. When both are off, restore the previous on/off state, effect
+      and colour.
+
+if RGB_CAPS_INDICATOR
+
+config RGB_CAPS_INDICATOR_CAPS_LOCK
+    bool "React to the computer's Caps Lock"
+    default y
+    select ZMK_HID_INDICATORS
+
+config RGB_CAPS_INDICATOR_CAPS_WORD
+    bool "React to Caps Word (&caps_word)"
+    default y
+
+config RGB_CAPS_INDICATOR_HUE
+    int "Colour hue (180 = cyan, 0 = red, 120 = green, 240 = blue)"
+    range 0 359
+    default 180
+
+config RGB_CAPS_INDICATOR_BRIGHTNESS
+    int "Colour brightness, in percent"
+    range 1 100
+    default 100
+
+endif
