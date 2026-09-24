@@ -38,6 +38,7 @@
     keymap {
         compatible = "zmk,keymap";
         default_layer {
+            display-name = "Default";
             //  -------------------------------------------------------------------------------------------------
             // |  GRAV |  1   |  2   |  3   |  4    |  5     |   6     |  7     |  8   |  9    |   0   | BSPC   |
             // |  TAB  |  Q   |  W   |  E   |  R    |  T     |   Y     |  U     |  I   |  O    |   P   | DEL    |
@@ -53,6 +54,7 @@
                 >;
         };
         lower {
+            display-name = "Lower";
             // ------------------------------------------------------------------------------------------
             // |   ~   |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |   *  |  (   |   )   | BSPC  |
             // |   ~   |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |   *  |  (   |   )   | DEL   |
@@ -68,6 +70,7 @@
                 >;
         };
         raise {
+            display-name = "Raise";
             // -------------------------------------------------------------------------------------------
             // |   `   |  1   |  2   |  3   |  4   |   5   |   6   |   7   |   8  |  9   |   0   | BSPC  |
             // |   `   |  1   |  2   |  3   |  4   |   5   |   6   |   7   |   8  |  9   |   0   | DEL   |
@@ -83,6 +86,7 @@
                 >;
         };
         adj {
+            display-name = "Adjust";
             //  -------------------------------------------------------------------------------------------------
             // |  GRAV |  1   |  2   |  3   |  4    |  5     |   6     |  7     |  8   |  9    |   0   | BSPC   |
             // |  TAB  |  Q   |  W   |  E   |  R    |  T     |   Y     |  U     |  I   |  O    |   P   | DEL    |
@@ -90,12 +94,21 @@
             // | SHIFT |  Z   |  X   |  C   |  V    |  B     |   N     |  M     |  ,   |  .    |   /   | RET    |
             // |       | LGUI | LALT | LCTL | LOWER | SPACE  |  SPACE  |  RAISE | LEFT |  DOWN |   UP  | RIGHT  |
             bindings = <
-                &bootloader  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5                           &kp N6     &kp N7     &kp N8     &kp N9    &kp N0     &kp BSPC
+                &bootloader  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5                           &kp N6     &kp N7     &kp N8     &kp N9    &kp N0     &studio_unlock
                 &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                     &kp Y      &kp U      &kp I      &kp O     &kp P      &kp DEL
                 &out OUT_TOG &kp A        &kp S        &kp D        &kp F        &kp G          &forty_two        &kp H      &kp J      &kp K      &kp L     &kp SEMI   &kp SQT
                 &kp LSHIFT   &kp Z        &kp X        &kp C        &kp V        &kp B                            &kp N      &kp M      &kp COMMA  &kp DOT   &kp SLASH  &mt RSHIFT RET
                                                   &kp LALT  &trans     &kp SPACE  &rgb_ug RGB_EFR &rgb_ug RGB_EFF &kp SPACE  &trans     &kp K_CMENU
                 >;
+        };
+
+        // Spare layers that ZMK Studio can turn into new layers.
+        extra1 {
+            status = "reserved";
+        };
+
+        extra2 {
+            status = "reserved";
         };
     };
 };
