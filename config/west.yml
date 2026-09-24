@@ -10,9 +10,5 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
-    - name: petezmk
-      url: https://github.com/piit79/zmk.git
-      revision: main
-      path: modules/petezmk
   self:
     path: config
