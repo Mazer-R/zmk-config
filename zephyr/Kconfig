@@ -1,0 +1,36 @@
+# Custom firmware features for this keyboard.
+# Enable and tune them in config/rev57lp.conf.
+
+menuconfig RGB_BATTERY_STATUS
+    bool "Show battery level by blinking the underglow"
+    depends on ZMK_RGB_UNDERGLOW && ZMK_BATTERY_REPORTING
+    help
+      Every RGB_BATTERY_STATUS_INTERVAL_SEC seconds, blink the underglow
+      with the colour pattern of the current battery level, then restore
+      the previous on/off state, effect and colour. The levels and their
+      colours are the table at the top of src/rgb_battery_status.c.
+
+if RGB_BATTERY_STATUS
+
+config RGB_BATTERY_STATUS_INTERVAL_SEC
+    int "Seconds between battery checks"
+    range 10 86400
+    default 600
+
+config RGB_BATTERY_STATUS_BLINK_MS
+    int "Duration of each on and each off phase, in milliseconds"
+    range 50 2000
+    default 300
+
+config RGB_BATTERY_STATUS_BRIGHTNESS
+    int "Blink brightness, in percent"
+    range 1 100
+    default 100
+
+config RGB_BATTERY_STATUS_DEMO
+    bool "Demo: show every level in turn instead of the real battery level"
+    help
+      Each check shows the next level of the table, ignoring the real
+      charge. Combine with a short interval to try out the colours.
+
+endif
