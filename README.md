@@ -39,10 +39,13 @@ Every push runs GitHub Actions, which builds the firmware from `build.yaml`
 3. A USB drive called `NICENANO` appears. Copy the `.uf2` file onto it. The drive
    disappears when flashing is done.
 
-Flashing does not erase keymap changes made with ZMK Studio; see
-[Keymap backups](#keymap-backups).
+Flashing does not erase keymap changes made with ZMK Studio; to save and
+recover them, see [Keymap backups](#keymap-backups).
 
 ## Layers
+
+As compiled into the firmware from `config/rev57lp.keymap`. Changes made with ZMK
+Studio are stored on the keyboard and can differ.
 
 | Layer | How to reach it | Contents |
 |---|---|---|
@@ -124,12 +127,14 @@ fork of ZMK:
 
 `scripts/studio-keymap/studio_keymap.py` reads the keymap stored on the keyboard,
 including every ZMK Studio change, and saves it as JSON plus a ready-to-build
-`.keymap` in `keymap-backups/`:
+`.keymap` in `keymap-backups/`. It can also write a JSON backup back to the
+keyboard:
 
 ```sh
 python3 scripts/studio-keymap/studio_keymap.py export
+python3 scripts/studio-keymap/studio_keymap.py restore keymap-backups/<file>.json
 ```
 
 See [scripts/studio-keymap/README.md](scripts/studio-keymap/README.md) for
-requirements, how to turn a backup into the firmware's default keymap, and
-troubleshooting.
+requirements, both ways of recovering a layout (restoring the JSON or building
+the `.keymap` into the firmware), and troubleshooting.

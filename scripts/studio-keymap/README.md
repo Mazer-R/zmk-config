@@ -1,16 +1,17 @@
-# Studio keymap backup
+# Studio keymap backup and restore
 
 `studio_keymap.py` saves the keymap that is stored **on the keyboard**, including
 every change made with [ZMK Studio](https://zmk.studio), into files you can keep
-in Git.
+in Git, and writes a saved keymap back to the keyboard.
 
 ZMK Studio edits the keymap live and stores it in the keyboard's flash, but it has
-no export button. If the keyboard's settings are ever wiped, or you move to a new
-controller, those changes are gone. This script reads them back over USB, using
-the same protocol as ZMK Studio, and turns them into:
+no export or import. If the keyboard's settings are ever wiped, or you move to a
+new controller, those changes are gone. This script uses the same protocol as ZMK
+Studio, over USB, to:
 
-- an exact **JSON** copy of every key, and
-- a complete, buildable **`.keymap`** file you can drop into `config/`.
+- **export** the keymap as an exact **JSON** copy of every key plus a complete,
+  buildable **`.keymap`** file you can drop into `config/`;
+- **restore** a JSON backup onto the keyboard, without rebuilding the firmware.
 
 ## Requirements
 
@@ -22,7 +23,11 @@ the same protocol as ZMK Studio, and turns them into:
 - **ZMK Studio closed.** Only one program can use the keyboard's serial port at a
   time.
 
-## Quick start
+Both commands need the keyboard **unlocked**. If it is locked, the script asks you
+to press the key bound to `&studio_unlock` and waits for up to two minutes. In this
+repository's keymap that key is the **top-right key of the Adjust layer**.
+
+## Export
 
 From the repository root:
 
@@ -30,25 +35,23 @@ From the repository root:
 python3 scripts/studio-keymap/studio_keymap.py export
 ```
 
-If the keyboard is locked, the script asks you to unlock it and waits for up to
-two minutes. On this keyboard the unlock key is **LOWER + RAISE + the top-right
-key** (the `&studio_unlock` binding on the Adjust layer).
-
-Example output:
-
 ```text
 Connected to 'Rev57LP' on /dev/cu.usbmodem1101
-The keyboard is locked. Press your Studio unlock key (on this keyboard: LOWER + RAISE + top-right key)...
+The keyboard is locked. Press the key bound to &studio_unlock (in this repo's keymap: Adjust layer, top-right key)...
 Unlocked.
 Saved 4 layers:
-  /Users/you/zmk-config/keymap-backups/rev57lp-20260924-201257.json
-  /Users/you/zmk-config/keymap-backups/rev57lp-20260924-201257.keymap
+  /Users/you/zmk-config/keymap-backups/rev57lp-20260924-223813.json
+  /Users/you/zmk-config/keymap-backups/rev57lp-20260924-223813.keymap
 ```
-
-## Output files
 
 Both files are written to `keymap-backups/` at the repository root and named after
 the keymap and the time of the export, so older backups are never overwritten.
+Commit them to keep them:
+
+```sh
+git add keymap-backups/
+git commit -m "Back up keymap from ZMK Studio"
+```
 
 ### `<keymap>-<date>-<time>.keymap`
 
@@ -63,13 +66,12 @@ Your current `config/rev57lp.keymap` with only two things replaced:
 Everything else (includes, macros, custom behaviors, conditional layers, combos)
 is copied unchanged. The bindings are laid out in rows and columns that follow the
 physical shape of the board, which makes them easy to read and to compare.
-
-Keycodes are written with the same spelling your keymap already uses (for example
+Keycodes are written with the spelling your keymap already uses (for example
 `LSHIFT` rather than `LSHFT`).
 
 ### `<keymap>-<date>-<time>.json`
 
-The raw data, for tooling and for a future restore:
+The raw data, used by `restore`:
 
 | Field | Content |
 |---|---|
@@ -80,12 +82,52 @@ The raw data, for tooling and for a future restore:
 | `bindings[]` | `behavior_id`, `param1`, `param2` exactly as stored, plus `keymap`, the same binding as keymap text |
 | `keymap.available_layers` | Spare layer slots Studio can still add |
 
-## Using a backup
+## Restore
 
-### Make it the firmware's default keymap
+There are two ways to get a saved keymap back onto a keyboard.
 
-This is the recovery path: after it, any freshly flashed or reset keyboard starts
-with your layout.
+### From the JSON, without rebuilding
+
+Check first what would change (nothing is written):
+
+```sh
+python3 scripts/studio-keymap/studio_keymap.py restore keymap-backups/rev57lp-<date>-<time>.json --dry-run
+```
+
+Then restore it:
+
+```sh
+python3 scripts/studio-keymap/studio_keymap.py restore keymap-backups/rev57lp-<date>-<time>.json
+```
+
+```text
+Connected to 'Rev57LP' on /dev/cu.usbmodem1101
+Changed 59 key(s); 169 already matched the backup
+Saved on the keyboard
+```
+
+What it does:
+
+- Matches layers **by position** (first layer of the backup to the first layer of
+  the keyboard, and so on) and renames them to the backup's names if needed.
+- If the backup has more layers than the keyboard, it adds them from the spare
+  layer slots. Layers the keyboard has beyond the backup are left untouched.
+- Writes **only the keys that differ**, then saves, exactly like **Save** in ZMK
+  Studio. The keymap survives restarts from then on.
+- Finds behaviors on the keyboard **by name**, because their numeric ids can be
+  different on another keyboard or after a settings reset. Layer parameters (such
+  as `&mo RAISE`) are translated to the keyboard's layer ids.
+- Checks that the keyboard has the same number of keys as the backup.
+
+A key whose behavior does not exist in the keyboard's firmware (for example a
+custom macro that was removed from the keymap) is listed as `Not restored`; the
+rest of the keymap is still written and saved, and the script exits with an error
+so the problem is not missed.
+
+### From the `.keymap`, by rebuilding the firmware
+
+This makes your layout the firmware's default: any freshly flashed keyboard, or one
+whose settings are reset, starts with it.
 
 1. Compare the export with the current file:
 
@@ -97,7 +139,7 @@ with your layout.
 
    ```sh
    cp keymap-backups/rev57lp-<date>-<time>.keymap config/rev57lp.keymap
-   git add config/rev57lp.keymap keymap-backups/
+   git add config/rev57lp.keymap
    git commit -m "Update keymap from ZMK Studio"
    git push
    ```
@@ -105,27 +147,22 @@ with your layout.
 3. GitHub Actions builds the new firmware. Flash it as usual.
 
 Flashing new firmware does **not** erase the changes stored by Studio: the keyboard
-keeps using them. To make the keyboard use the keymap compiled into the firmware,
-use **Restore Stock Settings** in ZMK Studio. If the backup went into `config/`
-first, nothing changes except that the stored copy and the compiled one are now
-the same.
-
-### Keep it only as a record
-
-Commit the files in `keymap-backups/` without touching `config/`. The JSON keeps
-the exact values and the `.keymap` is readable history of how the layout evolved.
+keeps using them. To make it use the keymap compiled into the firmware, choose
+**Restore Stock Settings** in ZMK Studio.
 
 ## Options
 
 ```text
-python3 scripts/studio-keymap/studio_keymap.py export [--port PORT] [--keymap FILE] [--output-dir DIR]
+studio_keymap.py export  [--port PORT] [--keymap FILE] [--output-dir DIR]
+studio_keymap.py restore BACKUP.json [--port PORT] [--keymap FILE] [--dry-run]
 ```
 
 | Option | Default | Use it when |
 |---|---|---|
 | `--port` | Detected: the only `/dev/cu.usbmodem*` (macOS) or `/dev/ttyACM*` (Linux) | Several serial devices are connected |
-| `--keymap` | The `.keymap` file in `config/` | You want another file as template |
-| `--output-dir` | `keymap-backups/` | You want the files somewhere else |
+| `--keymap` | The `.keymap` file in `config/` | Export: another file as template. Restore: the file that defines your custom behaviors |
+| `--output-dir` | `keymap-backups/` | Export: you want the files somewhere else |
+| `--dry-run` | Off | Restore: only list what would change |
 
 To find the port by hand on macOS, run `ls /dev/cu.usbmodem*` with the keyboard
 unplugged and again with it plugged in.
@@ -138,9 +175,12 @@ unplugged and again with it plugged in.
 | `Several serial ports found` | Pass the right one with `--port`. |
 | `Resource busy` or `The keyboard did not answer` | ZMK Studio (browser tab or app) or another program still has the port open: close it and try again. If it persists, the firmware may have been built without ZMK Studio. |
 | `Timed out waiting for the keyboard to be unlocked` | The unlock key was not pressed within two minutes. Run the script again. |
-| `Some keys could not be identified (behavior not available in this firmware)` | Those keys point to a behavior the firmware does not include. They are exported as `&none` with a `/* TODO */` note holding the raw values. |
-| `Some keys could not be identified (unknown behavior id N)` | The keyboard has a behavior the script does not recognise, for example a custom one that is not defined in the keymap file used as template. Same `/* TODO */` handling. |
-| `Layers were reordered in Studio` | Conditional layers (the LOWER + RAISE = Adjust rule) refer to layers by number. Check them in the exported `.keymap`. |
+| `Some keys could not be identified (behavior not available in this firmware)` | Export: those keys point to a behavior the firmware does not include. They are written as `&none` with a `/* TODO */` note holding the raw values. |
+| `Some keys could not be identified (unknown behavior id N)` | Export: the keyboard has a behavior the script does not recognise, for example a custom one that is not defined in the keymap used as template. Same `/* TODO */` handling. |
+| `Layers were reordered in Studio` | Export: conditional layers (the LOWER + RAISE = Adjust rule) refer to layers by number. Check them in the exported `.keymap`. |
+| `Not restored: ... uses a behavior this firmware does not have` | Restore: the keyboard's firmware lacks that behavior. Add it to the keymap and rebuild, or change that key in Studio. |
+| `The backup has N keys per layer but the keyboard has M` | Restore: the backup is from a different keyboard. |
+| `The keyboard could not save the changes` | Restore: the changes were written but not saved; they will be lost on restart. Try again. |
 
 Unknown keys are never guessed: a `/* TODO */` note keeps the exact data so it can
 be fixed by hand.
@@ -153,17 +193,19 @@ be fixed by hand.
 2. **Protocol.** Payloads are protobuf messages from
    [zmk-studio-messages](https://github.com/zmkfirmware/zmk-studio-messages). The
    script encodes and decodes the few message types it needs by hand, which is why
-   it needs no dependencies. It sends these requests:
+   it needs no dependencies. It uses these requests:
    - `core.get_device_info` and `core.get_lock_state` (waits while locked);
    - `behaviors.list_all_behaviors` and `behaviors.get_behavior_details`;
-   - `keymap.get_keymap` and `keymap.get_physical_layouts`.
+   - `keymap.get_keymap` and `keymap.get_physical_layouts`;
+   - for restore: `keymap.set_layer_binding`, `keymap.add_layer`,
+     `keymap.set_layer_props` and `keymap.save_changes`.
 3. **Behaviors.** The keyboard refers to behaviors by numeric ids that it assigns
    and keeps in its own settings, so the same behavior can have a different id on
    another keyboard. The script therefore asks the keyboard for each behavior's
    name (its `display-name`, or its devicetree name when it has none) and maps
    that name to a `&label`:
    - built-in ZMK behaviors (`Key Press` → `&kp`, `Mod-Tap` → `&mt`, ...);
-   - custom behaviors found in the template keymap (macros, hold-taps), matched by
+   - custom behaviors found in the keymap file (macros, hold-taps), matched by
      node name, `label` or `display-name`.
 4. **Parameters.** Each parameter is printed according to what it means for that
    behavior: a keycode (`LCTRL`, `LS(N1)`), a layer (`RAISE`), a Bluetooth command
@@ -174,7 +216,7 @@ be fixed by hand.
 
 ## Limitations
 
-- Only layers and bindings are exported: that is all ZMK Studio can edit. Macros,
+- Only layers and bindings are handled: that is all ZMK Studio can edit. Macros,
   combos and behavior settings (such as tapping terms) always come from the keymap
   file.
 - Written for ZMK v0.3. A later ZMK version may add behaviors or keycodes; they
@@ -183,13 +225,18 @@ be fixed by hand.
 
 ## Testing
 
-The script was tested end to end against ZMK v0.3 compiled as a `native_posix_64`
-simulation with the Rev57LP physical layout and Studio on a virtual serial port:
-lock and unlock, a binding changed through the Studio protocol, export, a new
-firmware built from the exported `.keymap`, and a second export that matched the
-first.
+The script was tested against ZMK v0.3 compiled as a `native_posix_64` simulation,
+with the Rev57LP physical layout, all behaviors enabled as in the real firmware,
+flash storage (NVS) and Studio on a virtual serial port:
 
-## Planned
-
-A `restore` command that writes a JSON backup back to the keyboard through Studio,
-so a layout can be recovered without rebuilding the firmware.
+- **Export:** lock and unlock, a key changed through the Studio protocol, export,
+  a new firmware built from the exported `.keymap`, and a second export that
+  matched the first.
+- **`.keymap` recovery:** a real export from the keyboard was built for
+  `nice_nano_v2`, and all 228 keys in the compiled firmware matched the raw values
+  read from the keyboard.
+- **Restore:** the same real backup restored onto the stock keymap. The dry run
+  wrote nothing; the restore changed the differing keys and saved them; after a
+  restart every key matched the backup; a second restore found nothing to change.
+  Bluetooth and underglow keys could not be exercised because the simulation has
+  neither.

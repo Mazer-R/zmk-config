@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Back up the keymap stored on a ZMK keyboard through the ZMK Studio protocol.
+Back up and restore the keymap stored on a ZMK keyboard through the ZMK
+Studio protocol.
 
 ZMK Studio edits the keymap live on the keyboard, but has no export button.
-This tool talks the same protocol over USB and saves what the keyboard has:
+This tool talks the same protocol over USB:
 
     python3 scripts/studio-keymap/studio_keymap.py export
+    python3 scripts/studio-keymap/studio_keymap.py restore keymap-backups/<file>.json
 
-It writes two files into keymap-backups/ (in the repository root):
+Export writes two files into keymap-backups/ (in the repository root):
 
   * <timestamp>.json    Exact copy of every binding (behavior id + raw
                         parameters), plus enough context to restore it later.
@@ -15,10 +17,14 @@ It writes two files into keymap-backups/ (in the repository root):
                         config/*.keymap with only the layers replaced by the
                         ones read from the keyboard, aligned like the board.
 
+Restore writes a JSON backup back to the keyboard and saves it, like Save in
+ZMK Studio. It only writes keys that differ, and --dry-run shows the changes
+without writing anything.
+
 Requirements: Python 3.8+ only (no pip packages). The keyboard must be
 connected over USB and running firmware with ZMK Studio enabled. Reading
-the keymap needs the keyboard to be unlocked (press your &studio_unlock key);
-the tool waits for it.
+or writing the keymap needs the keyboard to be unlocked (press your
+&studio_unlock key); the tool waits for it.
 
 Protocol reference: zmk-studio-messages (proto/zmk/*.proto) and
 zmk/app/src/studio/ in ZMK v0.3. See README.md next to this file.
@@ -321,8 +327,8 @@ class StudioClient:
     def wait_until_unlocked(self):
         if self.is_unlocked():
             return
-        print("The keyboard is locked. Press your Studio unlock key "
-              "(on this keyboard: LOWER + RAISE + top-right key)...", flush=True)
+        print("The keyboard is locked. Press the key bound to &studio_unlock "
+              "(in this repo's keymap: Adjust layer, top-right key)...", flush=True)
         deadline = time.monotonic() + UNLOCK_TIMEOUT_SECONDS
         while time.monotonic() < deadline:
             time.sleep(0.5)
@@ -383,6 +389,43 @@ class StudioClient:
                 for number, name in enumerate(("width", "height", "x", "y", "r", "rx", "ry"), 1)
             })
         return {"name": first(layout, 1, b"").decode("utf-8", "replace"), "keys": keys}
+
+    # -- Keymap changes (kept in RAM until save_changes) -------------------
+
+    def set_layer_binding(self, layer_id: int, key_position: int, behavior_id: int,
+                          param1: int, param2: int) -> int:
+        """Change one key. Returns 0 on success, else a SetLayerBindingResponse code."""
+        binding = (encode_varint_field(1, (behavior_id << 1) ^ (behavior_id >> 31))  # sint32
+                   + encode_varint_field(2, param1)
+                   + encode_varint_field(3, param2))
+        request = (encode_varint_field(1, layer_id)
+                   + encode_varint_field(2, key_position)
+                   + encode_message_field(3, binding))
+        response = self.request(SUBSYSTEM_KEYMAP, encode_message_field(2, request))
+        return first(response, 2, 0)
+
+    def add_layer(self) -> int:
+        """Turn one spare layer into a new layer and return its id."""
+        response = self.request(SUBSYSTEM_KEYMAP, encode_message_field(9, b""))
+        result = decode_message(first(response, 9, b""))
+        details = first(result, 1)
+        if details is None:
+            raise StudioError(f"The keyboard could not add a layer (error {first(result, 2, 0)})")
+        return first(decode_message(first(decode_message(details), 2, b"")), 1, 0)
+
+    def set_layer_name(self, layer_id: int, name: str) -> int:
+        request = encode_varint_field(1, layer_id) + encode_message_field(2, name.encode("utf-8"))
+        response = self.request(SUBSYSTEM_KEYMAP, encode_message_field(12, request))
+        return first(response, 12, 0)
+
+    def save_changes(self):
+        """Store pending changes in the keyboard's flash, like Save in ZMK Studio."""
+        response = self.request(SUBSYSTEM_KEYMAP, encode_varint_field(4, 1))
+        result = decode_message(first(response, 4, b""))
+        if first(result, 2) is not None:
+            error_code = first(result, 2)
+            reasons = {1: "generic error", 2: "not supported", 3: "no space left"}
+            raise StudioError(f"The keyboard could not save the changes ({reasons.get(error_code, error_code)})")
 
 
 # ---------------------------------------------------------------------------
@@ -757,6 +800,124 @@ def export_keymap(port: str, keymap_path: str, output_directory: str):
         print(f"Warning: {warning}")
 
 
+SET_LAYER_BINDING_ERRORS = {1: "invalid key position", 2: "behavior rejected", 3: "invalid parameters"}
+
+
+def translate_layer_parameters(binding: dict, parameter_kinds: tuple, layer_ids: dict):
+    """Map layer parameters from the backup's layer ids to the keyboard's layer ids."""
+    params = [binding["param1"], binding["param2"]]
+    for index, kind in enumerate(parameter_kinds[:2]):
+        if kind == "layer" and params[index] in layer_ids:
+            params[index] = layer_ids[params[index]]
+    return params
+
+
+def restore_keymap(port: str, backup_path: str, keymap_path: str, dry_run: bool):
+    with open(backup_path, encoding="utf-8") as backup_file:
+        backup = json.load(backup_file)
+    keymap_source = ""
+    if keymap_path and os.path.exists(keymap_path):
+        with open(keymap_path, encoding="utf-8") as keymap_file:
+            keymap_source = keymap_file.read()
+
+    backup_names = {int(behavior_id): behavior["display_name"]
+                    for behavior_id, behavior in backup["behaviors"].items()}
+    backup_catalog = BehaviorCatalog(backup_names, keymap_source)
+    backup_layers = backup["keymap"]["layers"]
+
+    with StudioClient(port) as client:
+        device_name = client.get_device_name()
+        print(f"Connected to '{device_name}' on {port}", flush=True)
+        if backup.get("device_name") and device_name and backup["device_name"] != device_name:
+            print(f"Warning: the backup was made on '{backup['device_name']}'", flush=True)
+        client.wait_until_unlocked()
+
+        keyboard_ids = {client.get_behavior_display_name(behavior_id): behavior_id
+                        for behavior_id in client.list_behavior_ids()}
+        keyboard_keymap = client.get_keymap()
+        keyboard_layers = keyboard_keymap["layers"]
+
+        key_count = len(backup["physical_layout"]["keys"])
+        if keyboard_layers and len(keyboard_layers[0]["bindings"]) != key_count:
+            raise StudioError(f"The backup has {key_count} keys per layer but the keyboard has "
+                              f"{len(keyboard_layers[0]['bindings'])}; is it the same keyboard?")
+
+        missing_layers = len(backup_layers) - len(keyboard_layers)
+        if missing_layers > keyboard_keymap["available_layers"]:
+            raise StudioError(f"The backup has {len(backup_layers)} layers but the keyboard can "
+                              f"only hold {len(keyboard_layers) + keyboard_keymap['available_layers']}")
+
+        # Layers are matched by position; extra layers are added from the spare slots.
+        layer_ids = [layer["id"] for layer in keyboard_layers]
+        current_bindings = [layer["bindings"] for layer in keyboard_layers]
+        for _ in range(max(missing_layers, 0)):
+            if dry_run:
+                layer_ids.append(None)
+            else:
+                layer_ids.append(client.add_layer())
+            current_bindings.append([None] * key_count)
+        layer_id_map = {layer["id"]: layer_ids[index] for index, layer in enumerate(backup_layers)}
+
+        changed, unchanged, failures = 0, 0, []
+        for index, layer in enumerate(backup_layers):
+            target_layer_id = layer_ids[index]
+            if index < len(keyboard_layers) and keyboard_layers[index]["name"] != layer["name"]:
+                print(f"Layer {index}: rename '{keyboard_layers[index]['name']}' -> '{layer['name']}'")
+                if not dry_run:
+                    client.set_layer_name(target_layer_id, layer["name"])
+            elif index >= len(keyboard_layers):
+                print(f"Layer {index}: add '{layer['name']}'")
+                if not dry_run:
+                    client.set_layer_name(target_layer_id, layer["name"])
+
+            for position, binding in enumerate(layer["bindings"]):
+                behavior_name = backup_names.get(binding["behavior_id"])
+                if behavior_name not in keyboard_ids:
+                    failures.append(f"{layer['name']} key {position}: '{binding['keymap']}' "
+                                    "uses a behavior this firmware does not have")
+                    continue
+
+                label = backup_catalog.label_for(binding["behavior_id"])
+                param1, param2 = translate_layer_parameters(
+                    binding, backup_catalog.parameter_kinds_for(label), layer_id_map)
+                wanted = {"behavior_id": keyboard_ids[behavior_name], "param1": param1, "param2": param2}
+                if current_bindings[index][position] == wanted:
+                    unchanged += 1
+                    continue
+
+                if dry_run:
+                    print(f"  {layer['name']} key {position}: set {binding['keymap']}")
+                    changed += 1
+                    continue
+                result = client.set_layer_binding(target_layer_id, position, wanted["behavior_id"],
+                                                  param1, param2)
+                if result == 0:
+                    changed += 1
+                else:
+                    failures.append(f"{layer['name']} key {position}: '{binding['keymap']}' "
+                                    f"({SET_LAYER_BINDING_ERRORS.get(result, result)})")
+
+        if len(keyboard_layers) > len(backup_layers):
+            print(f"Note: the keyboard has {len(keyboard_layers) - len(backup_layers)} layer(s) more "
+                  "than the backup; they were left untouched")
+
+        verb = "Would change" if dry_run else "Changed"
+        print(f"{verb} {changed} key(s); {unchanged} already matched the backup")
+        for failure in failures:
+            print(f"{'Cannot restore' if dry_run else 'Not restored'}: {failure}")
+
+        if dry_run:
+            print("Dry run: nothing was written to the keyboard")
+        elif changed or missing_layers > 0:
+            client.save_changes()
+            print("Saved on the keyboard")
+        else:
+            print("The keyboard already matches the backup; nothing to save")
+
+    if failures and not dry_run:
+        raise StudioError(f"{len(failures)} key(s) could not be restored, see above")
+
+
 def find_repository_root() -> str:
     """Walk up from this script to the folder that holds config/ (the zmk-config root)."""
     directory = os.path.dirname(os.path.abspath(__file__))
@@ -781,13 +942,25 @@ def main():
                                help="keymap file used as template (default: config/*.keymap)")
     export_parser.add_argument("--output-dir", default=os.path.join(repository_root, "keymap-backups"),
                                help="where to write the backup (default: keymap-backups/)")
+
+    restore_parser = subcommands.add_parser("restore", help="write a JSON backup back to the keyboard")
+    restore_parser.add_argument("backup", help="backup file written by 'export' (.json)")
+    restore_parser.add_argument("--port", help="serial port (default: detect it)")
+    restore_parser.add_argument("--keymap", default=default_keymaps[0] if default_keymaps else None,
+                                help="keymap file defining your custom behaviors (default: config/*.keymap)")
+    restore_parser.add_argument("--dry-run", action="store_true",
+                                help="only show what would change, write nothing")
     arguments = parser.parse_args()
 
     try:
-        if not arguments.keymap:
-            raise StudioError("No keymap file found in config/; pass one with --keymap")
-        export_keymap(arguments.port or find_serial_port(), arguments.keymap, arguments.output_dir)
-    except (StudioError, OSError) as error:
+        port = arguments.port or find_serial_port()
+        if arguments.command == "export":
+            if not arguments.keymap:
+                raise StudioError("No keymap file found in config/; pass one with --keymap")
+            export_keymap(port, arguments.keymap, arguments.output_dir)
+        else:
+            restore_keymap(port, arguments.backup, arguments.keymap, arguments.dry_run)
+    except (StudioError, OSError, ValueError, KeyError) as error:
         sys.exit(f"Error: {error}")
 
 
